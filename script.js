@@ -1,5 +1,5 @@
 // COLE AQUI a URL do Apps Script (termina em /exec)
-const API_URL = https://script.google.com/macros/s/AKfycbzHC9mP0ZBOPJ4lWDDzjZxZTCLXcvntJSdh1jjhN-jpwtxEkLCg-ZO-OHHiF-2MkX1I/exec;
+const API_URL = 'https://script.google.com/macros/s/AKfycbzHC9mP0ZBOPJ4lWDDzjZxZTCLXcvntJSdh1jjhN-jpwtxEkLCg-ZO-OHHiF-2MkX1I/exec';
 
 const $ = id => document.getElementById(id);
 const cpfInput = $('cpf'), msg = $('msg'), resultado = $('resultado'), viewer = $('viewer');
