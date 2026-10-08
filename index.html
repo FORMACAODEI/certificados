@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulta de Certificado</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="card">
+  <h1>Consulta de Certificado</h1>
+  <p class="sub">Digite seu CPF para acessar o seu certificado.</p>
+  <div class="busca">
+    <input id="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+    <button id="btnBuscar">Buscar</button>
+  </div>
+  <p id="msg" class="msg" role="alert"></p>
+
+  <section id="resultado" hidden>
+    <div class="acoes">
+      <button id="btnImprimir">🖨️ Imprimir</button>
+      <a id="btnBaixar" class="botao" download>⬇️ Baixar PDF</a>
+    </div>
+    <iframe id="viewer" title="Certificado"></iframe>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
