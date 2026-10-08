@@ -1,3 +1,6 @@
+// COLE AQUI a URL do Apps Script (termina em /exec)
+const API_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+
 const $ = id => document.getElementById(id);
 const cpfInput = $('cpf'), msg = $('msg'), resultado = $('resultado'), viewer = $('viewer');
 let urlAtual = null;
@@ -33,9 +36,13 @@ async function buscar() {
   if (!cpfValido(cpf)) return mostrarMsg('CPF inválido. Confira os números.');
   mostrarMsg('Buscando...', true);
   try {
-    const r = await fetch(`certificados/${cpf}.pdf`, { cache: 'no-store' });
-    if (!r.ok) throw new Error('nao encontrado');
-    const blob = await r.blob();
+    const r = await fetch(`${API_URL}?cpf=${cpf}`);
+    const dados = await r.json();
+    if (!dados.ok) throw new Error('nao encontrado');
+    const bin = atob(dados.pdf);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const blob = new Blob([bytes], { type: 'application/pdf' });
     urlAtual = URL.createObjectURL(blob);
     viewer.src = urlAtual;
     $('btnBaixar').href = urlAtual;
